@@ -1,0 +1,458 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>optimumschedule.constraints &mdash; optimumschedule 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home" alt="Documentation Home"> optimumschedule
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">optimumschedule</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>optimumschedule.constraints</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for optimumschedule.constraints</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Classes to encapsulate various kinds of constraints.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span>
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">abstractmethod</span>
+
+
+<div class="viewcode-block" id="Constraints"><a class="viewcode-back" href="../../api.html#optimumschedule.constraints.Constraints">[docs]</a><span class="k">class</span> <span class="nc">Constraints</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The abstract base class to encapsulate a set of constraints.</span>
+
+<span class="sd">    Subclasses must implement the ``get_constraints()`` method.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add the constraints to the problem.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        problem : LpProblem</span>
+<span class="sd">            The LpProblem object.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        problem : LpProblem</span>
+<span class="sd">            The LpProblem, with constraints added.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">constraint</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_constraints</span><span class="p">():</span>
+            <span class="n">problem</span> <span class="o">+=</span> <span class="n">constraint</span>
+        <span class="k">return</span> <span class="n">problem</span>
+
+<div class="viewcode-block" id="Constraints.get_constraints"><a class="viewcode-back" href="../../api.html#optimumschedule.constraints.Constraints.get_constraints">[docs]</a>    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">get_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Yield the constraints</span>
+<span class="sd">        &quot;&quot;&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="OnePersonPerPositionConstraints"><a class="viewcode-back" href="../../api.html#optimumschedule.constraints.OnePersonPerPositionConstraints">[docs]</a><span class="k">class</span> <span class="nc">OnePersonPerPositionConstraints</span><span class="p">(</span><span class="n">Constraints</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constraint ensure that each person is assigned to only one position.</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">         [ \displaystyle\sum_{p}^{P} ( pos(X_{i, p}) ) &lt;= 1 ] for i in N</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    variable : LpVariable of shape (i_people, p_positions)</span>
+<span class="sd">        The matrix of hours per person per position to optimize.</span>
+<span class="sd">    people : array-like of shape (i_people,)</span>
+<span class="sd">        A vector of people.</span>
+<span class="sd">    positions : array-like of shape (p_positions,)</span>
+<span class="sd">        A vector of positions.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">        - :math:`X_{i, p}` is scheduled hours for person ``i`` in position ``p``.</span>
+<span class="sd">        - :math:`N` is the number of people.</span>
+<span class="sd">        - :math:`P` is the number of positions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">variable</span><span class="p">,</span>
+                 <span class="n">people</span><span class="p">,</span>
+                 <span class="n">positions</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">variable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_vec</span> <span class="o">=</span> <span class="n">people</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_vec</span> <span class="o">=</span> <span class="n">positions</span>
+
+<div class="viewcode-block" id="OnePersonPerPositionConstraints.get_constraints"><a class="viewcode-back" href="../../api.html#optimumschedule.constraints.OnePersonPerPositionConstraints.get_constraints">[docs]</a>    <span class="k">def</span> <span class="nf">get_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Yield the constraints</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_vec</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">positive</span><span class="p">()</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_vec</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;only_one_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="HoursPerPersonPerPositionConstraints"><a class="viewcode-back" href="../../api.html#optimumschedule.constraints.HoursPerPersonPerPositionConstraints">[docs]</a><span class="k">class</span> <span class="nc">HoursPerPersonPerPositionConstraints</span><span class="p">(</span><span class="n">Constraints</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constraint to set minimum and maximum hours for each person and position.</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">         [ X_{i, p} &gt;= n_min_{i, p} ] \text{ for p in P for i in N }</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">         [ X_{i, p} &gt;= n_max_{i, p} ] \text{ for p in P for i in N }</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    variable : LpVariable of shape (i_people, p_positions)</span>
+<span class="sd">        The matrix of hours per person per position to optimize.</span>
+<span class="sd">    people : array-like of shape (i_people,)</span>
+<span class="sd">        A vector of people.</span>
+<span class="sd">    positions : array-like of shape (p_positions,)</span>
+<span class="sd">        A vector of positions.</span>
+<span class="sd">    min_hours_per_person_per_position : array-like of shape (i_people, p_positions) or None, default=None</span>
+<span class="sd">        The minimum number of hours per person.</span>
+<span class="sd">    max_hours_per_person_per_position : array-like of shape (i_people, p_positions) or None, default=None</span>
+<span class="sd">        The maximum number of hours per person.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">        - :math:`X_{i, p}` is scheduled hours for person ``i`` in position ``p``.</span>
+<span class="sd">        - :math:`N` is the number of people.</span>
+<span class="sd">        - :math:`P` is the number of positions.</span>
+<span class="sd">        - :math:`np_min_{i, p}` ...</span>
+<span class="sd">        - :math:`np_max_{i, p}` ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">variable</span><span class="p">,</span>
+                 <span class="n">people</span><span class="p">,</span>
+                 <span class="n">positions</span><span class="p">,</span>
+                 <span class="n">min_hours_per_person_per_position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">max_hours_per_person_per_position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">variable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_vec</span> <span class="o">=</span> <span class="n">people</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_vec</span> <span class="o">=</span> <span class="n">positions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">np_min</span> <span class="o">=</span> <span class="n">min_hours_per_person_per_position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">np_max</span> <span class="o">=</span> <span class="n">max_hours_per_person_per_position</span>
+
+<div class="viewcode-block" id="HoursPerPersonPerPositionConstraints.get_constraints"><a class="viewcode-back" href="../../api.html#optimumschedule.constraints.HoursPerPersonPerPositionConstraints.get_constraints">[docs]</a>    <span class="k">def</span> <span class="nf">get_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Yield the constraints</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">np_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_vec</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_vec</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">p</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">np_min</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;min_for_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">np_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_vec</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_vec</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">p</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">np_max</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;max_for_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span></div></div>
+
+
+<div class="viewcode-block" id="HoursPerPositionConstraints"><a class="viewcode-back" href="../../api.html#optimumschedule.constraints.HoursPerPositionConstraints">[docs]</a><span class="k">class</span> <span class="nc">HoursPerPositionConstraints</span><span class="p">(</span><span class="n">Constraints</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constraint to set minimum and maximum hours for each person and position.</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">         [ \displaystyle\sum_{p}^{P} ( X_{i, p} ) &gt;= n_min_{p} ] for i in N</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">         [ \displaystyle\sum_{p}^{P} ( X_{i, p} ) &gt;= n_max_{p} ] for i in N</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    variable : LpVariable of shape (i_people, p_positions)</span>
+<span class="sd">        The matrix of hours per person per position to optimize.</span>
+<span class="sd">    people : array-like of shape (i_people,)</span>
+<span class="sd">        A vector of people.</span>
+<span class="sd">    positions : array-like of shape (p_positions,)</span>
+<span class="sd">        A vector of positions.</span>
+<span class="sd">    min_hours_per_person : array-like of shape (i_people,) or None, default=None</span>
+<span class="sd">        The minimum number of hours per person.</span>
+<span class="sd">    max_hours_per_person : array-like of shape (i_people,) or None, default=None</span>
+<span class="sd">        The maximum number of hours per person.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">        - :math:`X_{i, p}` is scheduled hours for person ``i`` in position ``p``.</span>
+<span class="sd">        - :math:`N` is the number of people.</span>
+<span class="sd">        - :math:`P` is the number of positions.</span>
+<span class="sd">        - :math:`p_min_{p}` ...</span>
+<span class="sd">        - :math:`p_max_{p}` ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">variable</span><span class="p">,</span>
+                 <span class="n">people</span><span class="p">,</span>
+                 <span class="n">positions</span><span class="p">,</span>
+                 <span class="n">min_hours_per_position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">max_hours_per_position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">variable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_vec</span> <span class="o">=</span> <span class="n">people</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_vec</span> <span class="o">=</span> <span class="n">positions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_min</span> <span class="o">=</span> <span class="n">min_hours_per_position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_max</span> <span class="o">=</span> <span class="n">max_hours_per_position</span>
+
+<div class="viewcode-block" id="HoursPerPositionConstraints.get_constraints"><a class="viewcode-back" href="../../api.html#optimumschedule.constraints.HoursPerPositionConstraints.get_constraints">[docs]</a>    <span class="k">def</span> <span class="nf">get_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Yield the constraints</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_vec</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_vec</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_min</span><span class="p">[</span><span class="n">p</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;min_for_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_vec</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">p</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_vec</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_max</span><span class="p">[</span><span class="n">p</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;max_for_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span></div></div>
+
+<div class="viewcode-block" id="RatePerPositionConstraints"><a class="viewcode-back" href="../../api.html#optimumschedule.constraints.RatePerPositionConstraints">[docs]</a><span class="k">class</span> <span class="nc">RatePerPositionConstraints</span><span class="p">(</span><span class="n">Constraints</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Constraint to set minimum and maximum hours for each person and position.</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">         [ \displaystyle\sum_{i}^{N} ( X_{i, p} ) &gt;= p_min_{p} ] for p in P</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">         [ \displaystyle\sum_{i}^{N} ( X_{i, p} ) &gt;= p_max_{p} ] for p in P</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    variable : LpVariable of shape (i_people, p_positions)</span>
+<span class="sd">        The matrix of hours per person per position to optimize.</span>
+<span class="sd">    people : array-like of shape (i_people,)</span>
+<span class="sd">        A vector of people.</span>
+<span class="sd">    positions : array-like of shape (p_positions,)</span>
+<span class="sd">        A vector of positions.</span>
+<span class="sd">    people_rates : array-like of shape (i_people,)</span>
+<span class="sd">        An array of rates for each person.</span>
+<span class="sd">    min_hours_per_person : array-like of shape (i_people,) or None, default=None</span>
+<span class="sd">        The minimum number of hours per person.</span>
+<span class="sd">    max_hours_per_person : array-like of shape (i_people,) or None, default=None</span>
+<span class="sd">        The maximum number of hours per person.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">        - :math:`X_{i, p}` is scheduled hours for person ``i`` in position ``p``.</span>
+<span class="sd">        - :math:`N` is the number of people.</span>
+<span class="sd">        - :math:`P` is the number of positions.</span>
+<span class="sd">        - :math:`p_min_{p}` ...</span>
+<span class="sd">        - :math:`p_max_{p}` ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">variable</span><span class="p">,</span>
+                 <span class="n">people</span><span class="p">,</span>
+                 <span class="n">positions</span><span class="p">,</span>
+                 <span class="n">people_rates</span><span class="p">,</span>
+                 <span class="n">min_rate_per_position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">max_rate_per_position</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="n">variable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_vec</span> <span class="o">=</span> <span class="n">people</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_vec</span> <span class="o">=</span> <span class="n">positions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_rates</span> <span class="o">=</span> <span class="n">people_rates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_min</span> <span class="o">=</span> <span class="n">min_rate_per_position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p_max</span> <span class="o">=</span> <span class="n">max_rate_per_position</span>
+
+<div class="viewcode-block" id="RatePerPositionConstraints.get_constraints"><a class="viewcode-back" href="../../api.html#optimumschedule.constraints.RatePerPositionConstraints.get_constraints">[docs]</a>    <span class="k">def</span> <span class="nf">get_constraints</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Yield the constraints</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_max</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">p_vec</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">positive</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_vec</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_max</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">&gt;=</span> 
+                       <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_rates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">N</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;max_rate_for_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_min</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">p_vec</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span><span class="o">.</span><span class="n">positive</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_vec</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">p_min</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">&lt;=</span> 
+                       <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_rates</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">N</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;min_rate_for_</span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

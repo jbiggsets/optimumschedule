@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API Documentation &mdash; optimumschedule 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to optimumschedule’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> optimumschedule
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#optimumschedule-package"><code class="xref py py-mod docutils literal notranslate"><span class="pre">optimumschedule</span></code> Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-optimumschedule.constraints">From <code class="xref py py-mod docutils literal notranslate"><span class="pre">constraints</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-optimumschedule.objective">From <code class="xref py py-mod docutils literal notranslate"><span class="pre">objective</span></code> Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-optimumschedule.optimizer">From <code class="xref py py-mod docutils literal notranslate"><span class="pre">optimizer</span></code> Module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">optimumschedule</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>API Documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api-documentation">
+<span id="api"></span><h1>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
+<p>The <cite>optimumschedule</cite> library …</p>
+<div class="section" id="optimumschedule-package">
+<h2><code class="xref py py-mod docutils literal notranslate"><span class="pre">optimumschedule</span></code> Package<a class="headerlink" href="#optimumschedule-package" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="optimumschedule.rate_scheduler">
+<code class="sig-prename descclassname">optimumschedule.</code><code class="sig-name descname">rate_scheduler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">roster</span></em>, <em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">quals</span></em>, <em class="sig-param"><span class="n">hours_min</span><span class="o">=</span><span class="default_value">0.0</span></em>, <em class="sig-param"><span class="n">hours_max</span><span class="o">=</span><span class="default_value">2000.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/optimize_rates.html#rate_scheduler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.rate_scheduler" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="section" id="module-optimumschedule.constraints">
+<span id="from-constraints-module"></span><h3>From <a class="reference internal" href="#module-optimumschedule.constraints" title="optimumschedule.constraints"><code class="xref py py-mod docutils literal notranslate"><span class="pre">constraints</span></code></a> Module<a class="headerlink" href="#module-optimumschedule.constraints" title="Permalink to this headline">¶</a></h3>
+<p>Classes to encapsulate various kinds of constraints.</p>
+<dl class="py class">
+<dt id="optimumschedule.constraints.Constraints">
+<em class="property">class </em><code class="sig-prename descclassname">optimumschedule.constraints.</code><code class="sig-name descname">Constraints</code><a class="reference internal" href="_modules/optimumschedule/constraints.html#Constraints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.constraints.Constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>The abstract base class to encapsulate a set of constraints.</p>
+<p>Subclasses must implement the <code class="docutils literal notranslate"><span class="pre">get_constraints()</span></code> method.</p>
+<dl class="py method">
+<dt id="optimumschedule.constraints.Constraints.get_constraints">
+<em class="property">abstract </em><code class="sig-name descname">get_constraints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/constraints.html#Constraints.get_constraints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.constraints.Constraints.get_constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield the constraints</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="optimumschedule.constraints.HoursPerPersonPerPositionConstraints">
+<em class="property">class </em><code class="sig-prename descclassname">optimumschedule.constraints.</code><code class="sig-name descname">HoursPerPersonPerPositionConstraints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em>, <em class="sig-param"><span class="n">people</span></em>, <em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="n">min_hours_per_person_per_position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max_hours_per_person_per_position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/constraints.html#HoursPerPersonPerPositionConstraints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.constraints.HoursPerPersonPerPositionConstraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#optimumschedule.constraints.Constraints" title="optimumschedule.constraints.Constraints"><code class="xref py py-class docutils literal notranslate"><span class="pre">optimumschedule.constraints.Constraints</span></code></a></p>
+<p>Constraint to set minimum and maximum hours for each person and position.</p>
+<div class="math notranslate nohighlight">
+\[[ X_{i, p} &gt;= n_min_{i, p} ]   ext{ for p in P for i in N }\]</div>
+<div class="math notranslate nohighlight">
+\[[ X_{i, p} &gt;= n_max_{i, p} ]   ext{ for p in P for i in N }\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable</strong> (<em>LpVariable of shape</em><em> (</em><em>i_people</em><em>, </em><em>p_positions</em><em>)</em>) – The matrix of hours per person per position to optimize.</p></li>
+<li><p><strong>people</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>)</em>) – A vector of people.</p></li>
+<li><p><strong>positions</strong> (<em>array-like of shape</em><em> (</em><em>p_positions</em><em>,</em><em>)</em>) – A vector of positions.</p></li>
+<li><p><strong>min_hours_per_person_per_position</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>, </em><em>p_positions</em><em>) or </em><em>None</em><em>, </em><em>default=None</em>) – The minimum number of hours per person.</p></li>
+<li><p><strong>max_hours_per_person_per_position</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>, </em><em>p_positions</em><em>) or </em><em>None</em><em>, </em><em>default=None</em>) – The maximum number of hours per person.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_{i, p}\)</span> is scheduled hours for person <code class="docutils literal notranslate"><span class="pre">i</span></code> in position <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of people.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the number of positions.</p></li>
+<li><p><span class="math notranslate nohighlight">\(np_min_{i, p}\)</span> …</p></li>
+<li><p><span class="math notranslate nohighlight">\(np_max_{i, p}\)</span> …</p></li>
+</ul>
+<dl class="py method">
+<dt id="optimumschedule.constraints.HoursPerPersonPerPositionConstraints.get_constraints">
+<code class="sig-name descname">get_constraints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/constraints.html#HoursPerPersonPerPositionConstraints.get_constraints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.constraints.HoursPerPersonPerPositionConstraints.get_constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield the constraints</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="optimumschedule.constraints.HoursPerPositionConstraints">
+<em class="property">class </em><code class="sig-prename descclassname">optimumschedule.constraints.</code><code class="sig-name descname">HoursPerPositionConstraints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em>, <em class="sig-param"><span class="n">people</span></em>, <em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="n">min_hours_per_position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max_hours_per_position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/constraints.html#HoursPerPositionConstraints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.constraints.HoursPerPositionConstraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#optimumschedule.constraints.Constraints" title="optimumschedule.constraints.Constraints"><code class="xref py py-class docutils literal notranslate"><span class="pre">optimumschedule.constraints.Constraints</span></code></a></p>
+<p>Constraint to set minimum and maximum hours for each person and position.</p>
+<div class="math notranslate nohighlight">
+\[[ \displaystyle\sum_{p}^{P} ( X_{i, p} ) &gt;= n_min_{p} ] for i in N\]</div>
+<div class="math notranslate nohighlight">
+\[[ \displaystyle\sum_{p}^{P} ( X_{i, p} ) &gt;= n_max_{p} ] for i in N\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable</strong> (<em>LpVariable of shape</em><em> (</em><em>i_people</em><em>, </em><em>p_positions</em><em>)</em>) – The matrix of hours per person per position to optimize.</p></li>
+<li><p><strong>people</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>)</em>) – A vector of people.</p></li>
+<li><p><strong>positions</strong> (<em>array-like of shape</em><em> (</em><em>p_positions</em><em>,</em><em>)</em>) – A vector of positions.</p></li>
+<li><p><strong>min_hours_per_person</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>) or </em><em>None</em><em>, </em><em>default=None</em>) – The minimum number of hours per person.</p></li>
+<li><p><strong>max_hours_per_person</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>) or </em><em>None</em><em>, </em><em>default=None</em>) – The maximum number of hours per person.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_{i, p}\)</span> is scheduled hours for person <code class="docutils literal notranslate"><span class="pre">i</span></code> in position <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of people.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the number of positions.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p_min_{p}\)</span> …</p></li>
+<li><p><span class="math notranslate nohighlight">\(p_max_{p}\)</span> …</p></li>
+</ul>
+<dl class="py method">
+<dt id="optimumschedule.constraints.HoursPerPositionConstraints.get_constraints">
+<code class="sig-name descname">get_constraints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/constraints.html#HoursPerPositionConstraints.get_constraints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.constraints.HoursPerPositionConstraints.get_constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield the constraints</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="optimumschedule.constraints.OnePersonPerPositionConstraints">
+<em class="property">class </em><code class="sig-prename descclassname">optimumschedule.constraints.</code><code class="sig-name descname">OnePersonPerPositionConstraints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em>, <em class="sig-param"><span class="n">people</span></em>, <em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/constraints.html#OnePersonPerPositionConstraints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.constraints.OnePersonPerPositionConstraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#optimumschedule.constraints.Constraints" title="optimumschedule.constraints.Constraints"><code class="xref py py-class docutils literal notranslate"><span class="pre">optimumschedule.constraints.Constraints</span></code></a></p>
+<p>Constraint ensure that each person is assigned to only one position.</p>
+<div class="math notranslate nohighlight">
+\[[ \displaystyle\sum_{p}^{P} ( pos(X_{i, p}) ) &lt;= 1 ] for i in N\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable</strong> (<em>LpVariable of shape</em><em> (</em><em>i_people</em><em>, </em><em>p_positions</em><em>)</em>) – The matrix of hours per person per position to optimize.</p></li>
+<li><p><strong>people</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>)</em>) – A vector of people.</p></li>
+<li><p><strong>positions</strong> (<em>array-like of shape</em><em> (</em><em>p_positions</em><em>,</em><em>)</em>) – A vector of positions.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_{i, p}\)</span> is scheduled hours for person <code class="docutils literal notranslate"><span class="pre">i</span></code> in position <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of people.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the number of positions.</p></li>
+</ul>
+<dl class="py method">
+<dt id="optimumschedule.constraints.OnePersonPerPositionConstraints.get_constraints">
+<code class="sig-name descname">get_constraints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/constraints.html#OnePersonPerPositionConstraints.get_constraints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.constraints.OnePersonPerPositionConstraints.get_constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield the constraints</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="optimumschedule.constraints.RatePerPositionConstraints">
+<em class="property">class </em><code class="sig-prename descclassname">optimumschedule.constraints.</code><code class="sig-name descname">RatePerPositionConstraints</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em>, <em class="sig-param"><span class="n">people</span></em>, <em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="n">people_rates</span></em>, <em class="sig-param"><span class="n">min_rate_per_position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">max_rate_per_position</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/constraints.html#RatePerPositionConstraints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.constraints.RatePerPositionConstraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#optimumschedule.constraints.Constraints" title="optimumschedule.constraints.Constraints"><code class="xref py py-class docutils literal notranslate"><span class="pre">optimumschedule.constraints.Constraints</span></code></a></p>
+<p>Constraint to set minimum and maximum hours for each person and position.</p>
+<div class="math notranslate nohighlight">
+\[[ \displaystyle\sum_{i}^{N} ( X_{i, p} ) &gt;= p_min_{p} ] for p in P\]</div>
+<div class="math notranslate nohighlight">
+\[[ \displaystyle\sum_{i}^{N} ( X_{i, p} ) &gt;= p_max_{p} ] for p in P\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable</strong> (<em>LpVariable of shape</em><em> (</em><em>i_people</em><em>, </em><em>p_positions</em><em>)</em>) – The matrix of hours per person per position to optimize.</p></li>
+<li><p><strong>people</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>)</em>) – A vector of people.</p></li>
+<li><p><strong>positions</strong> (<em>array-like of shape</em><em> (</em><em>p_positions</em><em>,</em><em>)</em>) – A vector of positions.</p></li>
+<li><p><strong>people_rates</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>)</em>) – An array of rates for each person.</p></li>
+<li><p><strong>min_hours_per_person</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>) or </em><em>None</em><em>, </em><em>default=None</em>) – The minimum number of hours per person.</p></li>
+<li><p><strong>max_hours_per_person</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>) or </em><em>None</em><em>, </em><em>default=None</em>) – The maximum number of hours per person.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_{i, p}\)</span> is scheduled hours for person <code class="docutils literal notranslate"><span class="pre">i</span></code> in position <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of people.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the number of positions.</p></li>
+<li><p><span class="math notranslate nohighlight">\(p_min_{p}\)</span> …</p></li>
+<li><p><span class="math notranslate nohighlight">\(p_max_{p}\)</span> …</p></li>
+</ul>
+<dl class="py method">
+<dt id="optimumschedule.constraints.RatePerPositionConstraints.get_constraints">
+<code class="sig-name descname">get_constraints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/constraints.html#RatePerPositionConstraints.get_constraints"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.constraints.RatePerPositionConstraints.get_constraints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Yield the constraints</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-optimumschedule.objective">
+<span id="from-objective-module"></span><h3>From <a class="reference internal" href="#module-optimumschedule.objective" title="optimumschedule.objective"><code class="xref py py-mod docutils literal notranslate"><span class="pre">objective</span></code></a> Module<a class="headerlink" href="#module-optimumschedule.objective" title="Permalink to this headline">¶</a></h3>
+<p>Classes to encapsulate various kinds of objective functions.</p>
+<dl class="py class">
+<dt id="optimumschedule.objective.Objective">
+<em class="property">class </em><code class="sig-prename descclassname">optimumschedule.objective.</code><code class="sig-name descname">Objective</code><a class="reference internal" href="_modules/optimumschedule/objective.html#Objective"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.objective.Objective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.ABC</span></code></p>
+<p>The abstract base class to encapsulate an objective function.</p>
+<p>Subclasses must implement the <code class="docutils literal notranslate"><span class="pre">get_objective()</span></code> method.</p>
+<dl class="py method">
+<dt id="optimumschedule.objective.Objective.get_objective">
+<em class="property">abstract </em><code class="sig-name descname">get_objective</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/objective.html#Objective.get_objective"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.objective.Objective.get_objective" title="Permalink to this definition">¶</a></dt>
+<dd><p>The objective function.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="optimumschedule.objective.RateProfitObjective">
+<em class="property">class </em><code class="sig-prename descclassname">optimumschedule.objective.</code><code class="sig-name descname">RateProfitObjective</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em>, <em class="sig-param"><span class="n">people</span></em>, <em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="n">people_rates</span></em>, <em class="sig-param"><span class="n">position_rates</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/objective.html#RateProfitObjective"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.objective.RateProfitObjective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#optimumschedule.objective.Objective" title="optimumschedule.objective.Objective"><code class="xref py py-class docutils literal notranslate"><span class="pre">optimumschedule.objective.Objective</span></code></a></p>
+<p>Objective to optimize the scheduled hours for a given person in a given position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable</strong> (<em>LpVariable of shape</em><em> (</em><em>i_people</em><em>, </em><em>p_positions</em><em>)</em>) – The matrix of hours per person per position to optimize.</p></li>
+<li><p><strong>people</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>)</em>) – A vector of people.</p></li>
+<li><p><strong>positions</strong> (<em>array-like of shape</em><em> (</em><em>p_positions</em><em>,</em><em>)</em>) – A vector of positions.</p></li>
+<li><p><strong>people_rates</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>)</em>) – An array of rates for each person.</p></li>
+<li><p><strong>position_rates</strong> (<em>array-like of shape</em><em> (</em><em>p_positions</em><em>,</em><em>)</em>) – An array of rates for each position.</p></li>
+<li><p><strong>math::</strong> (<em>.</em>) – <dl class="simple">
+<dt>max [( displaystylesum_{i}^{N} sum_{p}^{P} X_{i, p} cdot C_{p} )  -</dt><dd><p>( displaystylesum_{i}^{N} sum_{p}^{P} X_{i, p} cdot R_{i} )]</p>
+</dd>
+</dl>
+</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_{i, p}\)</span> is scheduled hours for person <code class="docutils literal notranslate"><span class="pre">i</span></code> in position <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of people.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the number of positions.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{i}\)</span> is the rate for person <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_{p}\)</span> is the rate for position <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p></li>
+</ul>
+<dl class="py method">
+<dt id="optimumschedule.objective.RateProfitObjective.get_objective">
+<code class="sig-name descname">get_objective</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/objective.html#RateProfitObjective.get_objective"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.objective.RateProfitObjective.get_objective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the objective function.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="optimumschedule.objective.RateRevenueObjective">
+<em class="property">class </em><code class="sig-prename descclassname">optimumschedule.objective.</code><code class="sig-name descname">RateRevenueObjective</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em>, <em class="sig-param"><span class="n">people</span></em>, <em class="sig-param"><span class="n">positions</span></em>, <em class="sig-param"><span class="n">people_rates</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/objective.html#RateRevenueObjective"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.objective.RateRevenueObjective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#optimumschedule.objective.Objective" title="optimumschedule.objective.Objective"><code class="xref py py-class docutils literal notranslate"><span class="pre">optimumschedule.objective.Objective</span></code></a></p>
+<p>Objective to optimize the scheduled hours for a given person in a given position.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable</strong> (<em>LpVariable of shape</em><em> (</em><em>i_people</em><em>, </em><em>p_positions</em><em>)</em>) – The matrix of hours per person per position to optimize.</p></li>
+<li><p><strong>people</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>)</em>) – A vector of people.</p></li>
+<li><p><strong>positions</strong> (<em>array-like of shape</em><em> (</em><em>p_positions</em><em>,</em><em>)</em>) – A vector of positions.</p></li>
+<li><p><strong>people_rates</strong> (<em>array-like of shape</em><em> (</em><em>i_people</em><em>,</em><em>)</em>) – An array of rates for each person.</p></li>
+<li><p><strong>math::</strong> (<em>.</em>) – max [( displaystylesum_{i}^{N} sum_{p}^{P} X_{i, p} cdot R_{i} )]</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_{i, p}\)</span> is scheduled hours for person <code class="docutils literal notranslate"><span class="pre">i</span></code> in position <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the number of people.</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span> is the number of positions.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_{i}\)</span> is the rate for person <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p></li>
+</ul>
+<dl class="py method">
+<dt id="optimumschedule.objective.RateRevenueObjective.get_objective">
+<code class="sig-name descname">get_objective</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/objective.html#RateRevenueObjective.get_objective"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.objective.RateRevenueObjective.get_objective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the objective function.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-optimumschedule.optimizer">
+<span id="from-optimizer-module"></span><h3>From <a class="reference internal" href="#module-optimumschedule.optimizer" title="optimumschedule.optimizer"><code class="xref py py-mod docutils literal notranslate"><span class="pre">optimizer</span></code></a> Module<a class="headerlink" href="#module-optimumschedule.optimizer" title="Permalink to this headline">¶</a></h3>
+<p>Optimize the rate schedule</p>
+<dl class="py class">
+<dt id="optimumschedule.optimizer.Optimizer">
+<em class="property">class </em><code class="sig-prename descclassname">optimumschedule.optimizer.</code><code class="sig-name descname">Optimizer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em>, <em class="sig-param"><span class="n">values_dict</span></em>, <em class="sig-param"><span class="n">objective</span></em>, <em class="sig-param"><span class="n">constraints</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">maximize</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/optimizer.html#Optimizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.optimizer.Optimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Optimization class</p>
+<dl class="py method">
+<dt id="optimumschedule.optimizer.Optimizer.optimize">
+<code class="sig-name descname">optimize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/optimumschedule/optimizer.html#Optimizer.optimize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#optimumschedule.optimizer.Optimizer.optimize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Optimize the model.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to optimumschedule’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+optimize\_rates module
+======================
+
+.. automodule:: optimize_rates
+   :members:
+   :undoc-members:
+   :show-inheritance:

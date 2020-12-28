@@ -1,0 +1,12 @@
+optimumschedule
+===============
+
+.. toctree::
+   :maxdepth: 4
+
+   constraints
+   objective
+   optimize_rates
+   optimize_schedule
+   optimizer
+   utils

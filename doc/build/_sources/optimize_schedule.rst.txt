@@ -1,0 +1,7 @@
+optimize\_schedule module
+=========================
+
+.. automodule:: optimize_schedule
+   :members:
+   :undoc-members:
+   :show-inheritance:
