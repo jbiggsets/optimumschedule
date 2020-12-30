@@ -19,15 +19,14 @@ setup(name='optimumschedule',
       description='An optimization module for creating work '
                   'schedules and building rates',
       long_description=readme(),
-      keywords=['optimization', 'schedule',]
+      keywords=['optimization', 'schedule',],
       maintainer='Jeremy Biggs',
       maintainer_email='jeremy.m.biggs@gmail.com',
       license='Apache 2',
       packages=find_packages(),
       include_package_data=True,
       entry_points={'console_scripts':
-                    ['optimize_schedule = optimumschedule.optimize_schedule:main',
-                     'optimize_rates = optimumschedule.optimize_rates:main']
+                    ['optimize_rates = optimumschedule.optimize_rates:main']
                     },
       install_requires=requirements(),
       classifiers=['Intended Audience :: Science/Research',

@@ -4,7 +4,6 @@ Optimize the rate schedule
 from pulp import (LpProblem,
                   LpMinimize,
                   LpMaximize,
-                  LpVariable,
                   LpStatus,
                   value as obj_value)
 
@@ -41,11 +40,11 @@ class Optimizer:
         # initialize up the problem
         problem = LpProblem(self.name, LpMaximize if self.maximize else LpMinimize)
         # add the objective
-        problem += self.obj(**self.vals_dict)
+        problem = self.obj(**self.vals_dict) + problem
         # add the constraints
         if self.const is not None:
             for con in self.const:
-                problem += con(**self.vals_dict)
+                problem = con(**self.vals_dict) + problem
 
         # solve the problem
         problem.solve()
