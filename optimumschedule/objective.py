@@ -1,92 +1,68 @@
 """
 Classes to encapsulate various kinds of objective functions.
+
+author :: jeremy biggs
+organization :: mathematica policy research
+date :: 01-01-2021
 """
 
 from abc import ABC
 from abc import abstractmethod
+
+from gekko import GEKKO
 
 
 class Objective(ABC):
     """
     The abstract base class to encapsulate an objective function.
 
-    Subclasses must implement the ``get_objective()`` method.
+    Subclasses must implement the ``add_objective()`` method.
     """
 
-    def __add__(self, problem):
-        """
-        Add the objective to the problem.
-
-        Parameters
-        ----------
-        problem : LpProblem
-            The LpProblem object.
-
-        Returns
-        -------
-        problem : LpProblem
-            The LpProblem, with objective added.
-        """
-        problem += self.get_objective()
-        return problem
-
     @abstractmethod
-    def get_objective(self):
+    def add_objective(self):
         """
         The objective function.
         """
-
 
 class ScheduledHoursObjective(Objective):
     """
     Objective to optimize the scheduled hours for a given person
     in a given labor category.
 
-    Parameters
-    ----------
-    x, y : LpVariables of shape (i_people, j_categories)
-        The hours per person per position matrices to optimize.
-    wages : pandas Series of shape (i_people,)
-        A vector of wages for each person.
-    people : pandas Series of shape (i_people,)
-        A vector of people.
-    categories : pandas Series of shape (j_positions,)
-        A vector of positions.
-
-    Notes
-    -----
-        - :math:`X_{i, p}` is scheduled hours for person ``i`` in position ``p``.
-        - :math:`N` is the number of people.
-        - :math:`P` is the number of positions.
-
     .. math::
         \max [( \displaystyle\sum_{i}^{N} \sum_{p}^{P} X_{i, j} \cdot C_{p} )  - 
               ( \displaystyle\sum_{i}^{N} \sum_{p}^{P} X_{i, j} \cdot R_{i} )]
 
-    Notes
-    -----
-        - :math:`X_{i, p}` is scheduled hours for person ``i`` in position ``p``.
-        - :math:`N` is the number of people.
-        - :math:`P` is the number of positions.
-        - :math:`R_{i}` is the rate for person ``i``.
-        - :math:`C_{p}` is the rate for position ``p``.
+    Parameters
+    ----------
+    x, y, b : GEKKO Arrays (i_people, j_categories)
+        The hours per person per position matrices to optimize.
+    wages : pandas Series of shape (i_people,)
+        A vector of wages for each person.
+    people : iterable of shape (i_people,)
+        A vector of people.
+    categories : iterable of shape (j_positions,)
+        A vector of positions.
     """
 
     def __init__(self,
-                 x, y,
+                 x, y, b,
                  wages,
                  people,
                  categories,
                  **kwargs):
-        self.x, self.y = x, y
-        self.wages = wages
-        self.people = people
-        self.cats = categories
 
-    def get_objective(self):
+        self.x, self.y, self.b = x, y, b
+        self.wages = wages
+        self.n = len(people)
+        self.p = len(categories)
+
+    def add_objective(self, m):
         """
         Get the objective function.
         """
-        obj = (sum(self.x[i][j] * self.wages.loc[i] for i in self.people for j in self.cats) -
-               sum(self.y[i][j] * self.wages.loc[i] for i in self.people for j in self.cats))
-        return obj, 'obj'
+        m.Maximize(m.sum([self.x[i, j] * self.b[i, j] * self.wages.iloc[i]
+                          for j in range(self.p) for i in range(self.n)]))
+        m.Minimize(m.sum([self.y[i, j] * self.b[i, j] * self.wages.iloc[i]
+                          for j in range(self.p) for i in range(self.n)]))
